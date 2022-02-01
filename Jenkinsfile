@@ -6,10 +6,15 @@ node {
 
         checkout scm
     }
+    stage('Switch to sudo') {
+       steps {
+                sh "sudo su -"
+           }
+    }
 
     stage('Build image') {
   
-       app = sudo docker.build("anoophegde1995/test")
+       app = docker.build("anoophegde1995/test")
     }
 
     stage('Test image') {
@@ -22,7 +27,7 @@ node {
 
     stage('Push image') {
         
-        sudo docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+          docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("${env.BUILD_NUMBER}")
         }
     }
