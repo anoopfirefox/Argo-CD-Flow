@@ -7,9 +7,11 @@ node {
         checkout scm
     }
     stage('Switch to sudo') {
-       steps {
-                sh "sudo su -"
-           }
+
+     app.inside {
+            sh 'sudo su -'
+        }
+
     }
 
     stage('Build image') {
