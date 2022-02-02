@@ -8,8 +8,7 @@ node {
     }
     stage('Switch to sudo') {
 
-     app.inside {
-            sh 'sudo su -'
+            sh  "sudo su -"
         }
 
     }
