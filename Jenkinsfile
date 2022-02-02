@@ -9,7 +9,6 @@ node {
     stage('Switch to sudo') {
 
             sh  "sudo su -"
-        }
 
     }
 
